@@ -10,20 +10,24 @@
 </head>
 <body>
     <?php include('header.php') ?>
-    <main class=" container content">        
+    <main class=" container content">  
+        <form action="utils.php" method="post">    
+        <input type="hidden" name="id" value=<?php echo uniqid() ?>>  
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titre</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Titre de l'article">
+            <input type="text" name="titre" class="form-control" id="exampleFormControlInput1" placeholder="Titre de l'article">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Texte </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Texte de l'article"></textarea>
+            <textarea class="form-control" name="texte" id="exampleFormControlTextarea1" rows="3" placeholder="Texte de l'article"></textarea>
         </div> 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Auteur</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Auteur de l'article">
+            <input type="text" name="auteur" class="form-control" id="exampleFormControlInput1" placeholder="Auteur de l'article">
         </div>
-        <a class="btn btn-primary">Publier</a>
+        <input type="hidden" name="date" value=<?php echo date("d-m-Y") ?>>
+        <button type="submit" class="btn btn-primary" href="index.php">Publier</button>
+    </form>
     </main>
     <?php include('footer.php') ?>
 </body>

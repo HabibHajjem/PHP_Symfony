@@ -41,9 +41,9 @@ $articles[] = array(
 );
 
 function date_compare($element1, $element2) {
-    $datetime1 = strtotime($element1['date']);
-    $datetime2 = strtotime($element2['date']);
-    return $datetime2 - $datetime1;
+$datetime1 = strtotime($element1['date']);
+$datetime2 = strtotime($element2['date']);
+return $datetime2 - $datetime1;
 } 
 usort($articles, 'date_compare');
 
@@ -67,12 +67,6 @@ function getArticles($n=null){
           return $t;
       }  
     }
-
-    
-    
-    
-
-   
 
 
 ?>
