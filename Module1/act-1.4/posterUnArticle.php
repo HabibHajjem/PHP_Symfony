@@ -1,3 +1,4 @@
+<?php include('connectDB.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,36 +26,28 @@
             <label for="exampleFormControlInput1" class="form-label">Auteur</label>
             <input type="text" name="auteur" class="form-control" id="exampleFormControlInput1" placeholder="Auteur de l'article">
         </div>
-        <input type="hidden" name="date" value=<?php echo date("d-m-Y") ?>>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Date de publication</label>
+            <input type="date" name="date" class="form-control" id="exampleFormControlInput1">
+        </div>
         <button type="submit" name="submit" class="btn btn-primary" href="index.php">Publier</button>
     </form>
     </main>
     <?php include('footer.php') ?>
 </body>
 </html>
-
 <?php 
-
-    if ( isset($_POST['submit'])) {
-        $array = array();
-        $newArticle = array(
-            'id' => $_POST['id'],
-            'titre' => $_POST['titre'],
-            'text' => $_POST['text'],
-            'auteur' => $_POST['auteur'],
-            'date' =>$_POST['date']
-        );
-
-    if ( !file_exists('articles.json') ) {
-        $array[0] = $newArticle;
-    }
-    else {
-        $contentJson = file_get_contents('articles.json');
-        $array = json_decode($contentJson, true);
-        $array[] = $newArticle;
-    }
-
-    $contentJson = json_encode($array,JSON_PRETTY_PRINT);
-    file_put_contents('articles.json',$contentJson);
-    }
+if ( isset($_POST['submit'])) {
+    
+    $sqlQuery = 'INSERT INTO articles(titre, texte, auteur, date_publication) VALUES (:titre, :texte, :auteur, :date_publication)';
+    
+    $insertArticle = $db->prepare($sqlQuery);
+    
+    $insertArticle->execute([
+        'titre' => $_POST['titre'],
+        'texte' => $_POST['text'],
+        'auteur' => $_POST['auteur'],
+        'date_publication' => $_POST['date'], 
+    ]);
+}
     ?>

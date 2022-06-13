@@ -1,11 +1,18 @@
 <?php
+$articles = array();
+$content = file_get_contents('articles.json');
+$articles = json_decode($content, true);
+
+
 $articles[] = array(
+        'id' => '1',
         'titre' => 'php',
         'text' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         'auteur' => 'Habib Hajjem',
         'date' =>'12-12-2020');
 
 $articles[] = array(
+        'id' => uniqid(),
         'titre' => 'Symfony',
         'text' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         'auteur' => 'Med Ali',
@@ -13,6 +20,7 @@ $articles[] = array(
 );
 
 $articles[] = array(
+        'id' => uniqid(),
         'titre' => 'Angular',
         'text' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         'auteur' => 'Ala',
@@ -20,6 +28,7 @@ $articles[] = array(
 );
 
 $articles[] = array(
+        'id' => uniqid(),
         'titre' => 'HTML',
         'text' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         'auteur' => 'Bilel',
@@ -27,6 +36,7 @@ $articles[] = array(
 );
 
 $articles[] = array(
+        'id' => uniqid(),
         'titre' => 'React JS',
         'text' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         'auteur' => 'Ala',
@@ -34,6 +44,7 @@ $articles[] = array(
 );
 
 $articles[] = array(
+        'id' => uniqid(),
         'titre' => 'React JS',
         'text' => 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         'auteur' => 'Ala',
@@ -68,5 +79,18 @@ function getArticles($n=null){
       }  
     }
 
+function deleteArticle($id){
+        global $articles;
+
+        foreach($articles as $key => $value){
+                
+                if($value['id'] === $id){
+                        unset($articles[$key]);
+                }
+        }
+}
+
+deleteArticle('1');
+print_r($articles);
 
 ?>

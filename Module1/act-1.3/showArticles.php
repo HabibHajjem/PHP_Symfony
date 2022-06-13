@@ -6,6 +6,7 @@
                     <h6 class="card-subtitle mb-2 text-muted"><?php echo $article['date']; ?></h6>
                     <p class="card-text"><?php echo $article['text']; ?></p>
                 </div>
+                <button name="delete" class="btn btn-primary">Supprimer</button>
             </div>
 <?php endforeach ?> 
         
